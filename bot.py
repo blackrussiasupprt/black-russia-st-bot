@@ -199,11 +199,11 @@ async def last_login(
 
     context.user_data["last_login"] = update.message.text
 
+    # ИСПРАВЛЕНО: объединили строки в одну правильную строку
     await update.message.reply_text(
-    "🎓 Имеет ли кто-то доступ к вашему аккаунту ",
-    "помощь вам?\n\n",
-    "Например: Да / Нет / Не знаю",
-    reply_markup=navigation_keyboard(),
+        "🎓 Имеет ли кто-то доступ к вашему аккаунту помощь вам?\n\n"
+        "Например: Да / Нет / Не знаю",
+        reply_markup=navigation_keyboard(),
     )
 
 
@@ -407,44 +407,37 @@ def main():
         ],
 
         states={
-    NICKNAME: [
-        MessageHandler(
-            filters.TEXT & ~filters.COMMAND,
-            nickname
-        )
-    ],
-    DEVICE: [
-        MessageHandler(
-            filters.TEXT & ~filters.COMMAND,
-            device
-        )
-    DEVICE: [
-    MessageHandler(
-        filters.TEXT & ~filters.COMMAND,
-        device
-    )
-],
-    ],
-    OTHER_ACCESS: [
-        MessageHandler(
-            filters.TEXT & ~filters.COMMAND,
-            other_access
-        )
-    ],
-    CONFIRM: [
-        MessageHandler(
-            filters.TEXT & ~filters.COMMAND,
-            submit_application
-        )
-    ],
-},
-fallbacks=[
-    CommandHandler("start", start),
-    MessageHandler(
-        filters.Regex("^❌ Отмена$"),
-        cancel
-    )
-]
+            NICKNAME: [
+                MessageHandler(
+                    filters.TEXT & ~filters.COMMAND,
+                    nickname
+                )
+            ],
+            DEVICE: [
+                MessageHandler(
+                    filters.TEXT & ~filters.COMMAND,
+                    device
+                )
+            ],
+            LAST_LOGIN: [
+                MessageHandler(
+                    filters.TEXT & ~filters.COMMAND,
+                    last_login
+                )
+            ],
+            OTHER_ACCESS: [
+                MessageHandler(
+                    filters.TEXT & ~filters.COMMAND,
+                    other_access
+                )
+            ],
+            CONFIRM: [
+                MessageHandler(
+                    filters.TEXT & ~filters.COMMAND,
+                    submit_application
+                )
+            ],
+        },
         fallbacks=[
             CommandHandler("start", start),
             MessageHandler(
