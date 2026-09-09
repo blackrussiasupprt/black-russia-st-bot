@@ -15,8 +15,8 @@ from telegram.ext import (
 # НАСТРОЙКИ
 # =========================
 
-TOKEN = os.getenv("BOT_TOKEN")
-ADMIN_CHAT_ID = os.getenv("ADMIN_CHAT_ID")
+TOKEN = "8834511415:AAGrNpikUYQTCPASRtZ_3pHDwoDaaVOI9-8"
+ADMIN_CHAT_ID = -5497666880
 
 (
     NICKNAME,
