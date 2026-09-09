@@ -179,7 +179,7 @@ async def device(
     "🔑 Пароль от аккаунта \n\n",
     reply_markup=navigation_keyboard(),
     )
-    )
+    
 
     return LAST_LOGIN
 
@@ -211,7 +211,7 @@ async def last_login(
     "Например: Да / Нет / Не знаю",
     reply_markup=navigation_keyboard(),
     )
-    )
+
 
     return OTHER_ACCESS
 
