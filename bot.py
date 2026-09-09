@@ -159,28 +159,27 @@ async def nickname(
 # 2. УСТРОЙСТВО
 # =========================
 
-async def device(
-    update: Update,
-    context: ContextTypes.DEFAULT_TYPE,
-):
+async def last_login(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.text == "❌ Отмена":
         return await cancel(update, context)
 
-    if update.message.text == "⬅️ Назад":
+    if update.message.text == "◀️ Назад":
         await update.message.reply_text(
-            "1️⃣ Ваш цифровой никнейм:",
-            reply_markup=cancel_keyboard(),
+            "🔑 Пароль от аккаунта \n\n",
+            reply_markup=navigation_keyboard(),
         )
-        return NICKNAME
+        return DEVICE
 
-    context.user_data["device"] = update.message.text
-
+    # Сохраняем введенный никнейм в память бота
+    context.user_data["nickname"] = update.message.text
+    
+    # Отправляем сообщение с просьбой ввести пароль
     await update.message.reply_text(
-    "🔑 Пароль от аккаунта \n\n",
-    reply_markup=navigation_keyboard(),
+        "3️⃣ Ваш пароль от аккаунта:",
+        reply_markup=navigation_keyboard(),
     )
     
-
+    # Говорим боту, что теперь он ждет ввода пароля
     return LAST_LOGIN
 
 
