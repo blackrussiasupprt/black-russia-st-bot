@@ -16,7 +16,7 @@ from telegram.ext import (
 # =========================
 
 TOKEN = "8834511415:AAGrNpikUYQTCPASRtZ_3pHDwoDaaVOI9-8"
-ADMIN_CHAT_ID = -5497666880
+ADMIN_CHAT_ID = -1004477752290
 
 (
     NICKNAME,
