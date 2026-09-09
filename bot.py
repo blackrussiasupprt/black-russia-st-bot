@@ -412,42 +412,44 @@ def main():
         ],
 
         states={
-            NICKNAME: [
-                MessageHandler(
-                    filters.TEXT & ~filters.COMMAND,
-                    nickname,
-                )
-            ],
-
-            DEVICE: [
-                MessageHandler(
-                    filters.TEXT & ~filters.COMMAND,
-                    device,
-                )
-            ],
-
-            LAST_LOGIN: [
-                MessageHandler(
-                    filters.TEXT & ~filters.COMMAND,
-                    last_login,
-                )
-            ],
-
-            OTHER_ACCESS: [
-                MessageHandler(
-                    filters.TEXT & ~filters.COMMAND,
-                    other_access,
-                )
-            ],
-
-            CONFIRM: [
-                MessageHandler(
-                    filters.TEXT & ~filters.COMMAND,
-                    submit_application,
-                )
-            ],
-        },
-
+    NICKNAME: [
+        MessageHandler(
+            filters.TEXT & ~filters.COMMAND,
+            nickname
+        )
+    ],
+    DEVICE: [
+        MessageHandler(
+            filters.TEXT & ~filters.COMMAND,
+            device
+        )
+    ],
+    LAST_LOGIN: [
+        MessageHandler(
+            filters.TEXT & ~filters.COMMAND,
+            last_login
+        )
+    ],
+    OTHER_ACCESS: [
+        MessageHandler(
+            filters.TEXT & ~filters.COMMAND,
+            other_access
+        )
+    ],
+    CONFIRM: [
+        MessageHandler(
+            filters.TEXT & ~filters.COMMAND,
+            submit_application
+        )
+    ],
+},
+fallbacks=[
+    CommandHandler("start", start),
+    MessageHandler(
+        filters.Regex("^❌ Отмена$"),
+        cancel
+    )
+]
         fallbacks=[
             CommandHandler("start", start),
             MessageHandler(
