@@ -176,9 +176,9 @@ async def device(
     context.user_data["device"] = update.message.text
 
     await update.message.reply_text(
-        "3️⃣ Пароль от аккаунта \n\n"
-          
-        reply_markup=navigation_keyboard(),
+    "🔑 Пароль от аккаунта \n\n",
+    reply_markup=navigation_keyboard(),
+    )
     )
 
     return LAST_LOGIN
@@ -206,10 +206,11 @@ async def last_login(
     context.user_data["last_login"] = update.message.text
 
     await update.message.reply_text(
-        "4️⃣ Имеет ли кто-то доступ к вашему аккаунту "
-        "помимо вас?\n\n"
-        "Например: Да / Нет / Не знаю.",
-        reply_markup=navigation_keyboard(),
+    "🎓 Имеет ли кто-то доступ к вашему аккаунту ",
+    "помощь вам?\n\n",
+    "Например: Да / Нет / Не знаю",
+    reply_markup=navigation_keyboard(),
+    )
     )
 
     return OTHER_ACCESS
